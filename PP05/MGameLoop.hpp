@@ -12,6 +12,7 @@ namespace MuSeoun_Engine
     private:
         bool _isGameRunning;
         MConsoleRenderer cRenderer;
+        
         int tic = 0;
         double ticTime = 0;
 
@@ -77,7 +78,7 @@ namespace MuSeoun_Engine
             }
             chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
             
-            cRenderer.Clear(); //콘솔창 지우는거 << 생각보다 잡아먹는게 많다 이런 피셜
+            cRenderer.Clear();                           //콘솔창 지우는거 << 생각보다 잡아먹는게 많다 이런 피셜
             cRenderer.MoveCursor(10, 10);
             //  0.03   1초  33프레임
             
