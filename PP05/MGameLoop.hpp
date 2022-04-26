@@ -2,99 +2,111 @@
 #include <chrono>
 #include <thread>
 #include "MConsolUtil.hpp"
-
+#include "Player.hpp"
+#include "Monster.hpp"
 using namespace std;
 
 namespace MuSeoun_Engine
 {
-    class MGameLoop
-    {
-    private:
-        bool _isGameRunning;
-        MConsoleRenderer cRenderer;
-        int tic = 0;
-        double ticTime = 0;
+	class MGameLoop
+	{
+	private:
+		bool _isGameRunning;
+		MConsoleRenderer cRenderer;
+		chrono::system_clock::time_point startRenderTimePoint;
+		chrono::duration<double> renderDuration;
+		Player p;
+		Monster m;
 
-    public:
-        MGameLoop()
-        {
-            _isGameRunning = false;
-        }
-        ~MGameLoop()
-        {
+	public:
+		MGameLoop() { _isGameRunning = false; }
+		~MGameLoop() {}
 
-        }
+		void Run()
+		{
+			_isGameRunning = true;
+			Initialize();
 
-        void Run()
-        {
-            _isGameRunning = true;
-            Initialize();
+			startRenderTimePoint = chrono::system_clock::now();
+			while (_isGameRunning)
+			{
+				Input();
+				Update();
+				Render();
+			}
+			Release();
+		}
+		void Stop()
+		{
+			_isGameRunning = false;
+		}
+	private:
+		void Initialize()
+		{
+		}
+		void Release()
+		{
+			//cRenderer.MoveCursor(p.x, p.y);
+			//cRenderer.DrawString("-----Game Over-----");
+		}
+		void Input()
+		{
+			if (GetAsyncKeyState(VK_SPACE) & 0x8000 || GetAsyncKeyState(VK_SPACE) & 0x8001)
+			{
+				p.isKeyPressed();
+			}
+			else
+			{
+				p.isKeyUnpressed();
+			}
 
-            while (_isGameRunning)
-            {
-                Input();
-                Update();
-                Render();
-            }
-            Release();
-        }
-        void Stop()
-        {
-            _isGameRunning = false;
-        }
-    private:
-        void Initialize()
-        {
+		}
+		void Update()
+		{
+		}
+		void Render()
+		{
+			cRenderer.Clear();
 
-        }
-        void Release()
-        {
+			//cRenderer.MoveCursor(p.x, p.y);
+			///cRenderer.DrawString("P");
 
-        }
-        void Input()
-        {
-            /*if (GetAsyncKeyState(VK_SPACE) & 0x8000 || GetAsyncKeyState(VK_SPACE) & 0x8001)
-            {
+			//cRenderer.MoveCursor(m.x, m.y);
+			//cRenderer.DrawString("M");
+			//m.x--;
+			if (m.x == 20 && p.y == m.y)
+			{
+				cRenderer.MoveCursor(p.x, p.y);
+				cRenderer.DrawString("-----Game Over-----");
+			}
+			else
+			{
+				cRenderer.MoveCursor(p.x, p.y);
+				cRenderer.DrawString("P");
 
-            }
-            else
-            {
+				cRenderer.MoveCursor(m.x, m.y);
+				cRenderer.DrawString("M");
+				m.x--;
+			}
+			if (m.x == 0)
+			{
+				m.x = 80;
+			}
 
-            }*/
-        }
-        void Update()
-        {
+			cRenderer.MoveCursor(10, 20);
 
-        }
-        void Render()
-        {
-            if (ticTime >= 1.0f)
-            {
-                string fps = "FPS(seconds) : " + to_string(tic);
-                cRenderer.DrawString(fps);
-                ticTime = 0;
-                tic = 0;
-            }
-            chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
-            
-            cRenderer.Clear(); //콘솔창 지우는거 << 생각보다 잡아먹는게 많다 이런 피셜
-            cRenderer.MoveCursor(10, 10);
-            //  0.03   1초  33프레임
-            
-            chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint; //1틱 ex 0.03초
-            tic++; //1틱
+			renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+			startRenderTimePoint = chrono::system_clock::now();
+			string fps = "FPS : " + to_string(1.0 / renderDuration.count());
+			cRenderer.DrawString(fps);
 
-            ticTime = ticTime + renderDuration.count(); // 0.03초
+			this_thread::sleep_for(chrono::milliseconds(20));
+		}
 
-                //cout << "FPS(second) : " + i;
-            
-                
-            
-              
-        }
-        ////cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;
-        //int remainingFrameTime = 100 - (int)(renderDuration.count() * 1000.0);
-        //if (remainingFrameTime > 0)
-        // this_thread::sleep_for(chrono::milliseconds(remainFrameTime));
-    };
+		////cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;
+
+		//int remainingFrameTime = 100 - (int)(renderDuration.count() * 1000.0);
+		//if (remainingFrameTime > 0)
+		//	this_thread::sleep_for(chrono::milliseconds(remainingFrameTime));
+	};
 }
