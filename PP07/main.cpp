@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#pragma comment(lib,"OpenGL32")
+
 static void error_callback(int error, const char* description)
 {
     fputs(description, stderr);
@@ -23,22 +25,45 @@ int main(void)
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(window); //gpu정리
     glfwSetKeyCallback(window, key_callback);
+    
+    float ratio;
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height); //framebuffer = 화면에 담겨질 메모리 공간?
+    ratio = width / (float)height;
 
     while (!glfwWindowShouldClose(window))
     {
-        float ratio;
-        int width, height;
-        glfwGetFramebufferSize(window, &width, &height);
-        ratio = width / (float)height;
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // 화면을 한가지 색으로 채운다(클리어하겠다)
+        glClear(GL_COLOR_BUFFER_BIT);
 
+        glPointSize(10);
+        glBegin(GL_TRIANGLES);
 
-        //glClearColor(0, 0, 1, 1);
-        //glClear(GL_COLOR_BUFFER_BIT);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex2f(0.5f, 0.5f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex2f(0.5f, 0.0f);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex2f(-0.1f, 0.0f);
+
+        glEnd();
+
+        glPointSize(10);
+        glBegin(GL_TRIANGLES);
+
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex2f(-0.5f, -0.5f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex2f(0.5f, 0.5f);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex2f(0.0f, -0.1f);
+
+        glEnd();
 
         glfwSwapBuffers(window);
-        glfwPollEvents();
+        glfwPollEvents(); // 이벤트를 계속 체크
     }
     glfwDestroyWindow(window);
     glfwTerminate();
