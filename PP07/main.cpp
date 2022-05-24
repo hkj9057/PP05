@@ -4,8 +4,6 @@
 #include <Windows.h>
 #include <iostream>
 
-
-
 #pragma comment(lib,"OpenGL32")
 
 static void error_callback(int error, const char* description)
@@ -136,6 +134,10 @@ int main(void)
             moveBoxPointy2 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
         if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
             moveBoxPointy1 > boxPointy2 && moveBoxPointy1 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
+        if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
+            moveBoxPointy2 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
+        if (moveBoxPointx2 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
+            moveBoxPointy1 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
         
         
        
