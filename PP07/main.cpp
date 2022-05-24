@@ -76,8 +76,6 @@ int main(void)
             moveBoxPointy2 -= 0.03;
         }
 
-
-
         glPointSize(10);
         glBegin(GL_TRIANGLES);
 
@@ -102,7 +100,7 @@ int main(void)
 
         glEnd(); // 사각형
         
-        glPointSize(5);
+        glPointSize(5); // 움직이는 사각형
         glBegin(GL_TRIANGLES);
 
         glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
@@ -112,7 +110,7 @@ int main(void)
         glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
         glVertex2f(moveBoxPointx1, moveBoxPointy1);
 
-        glEnd(); // 삼각형
+        glEnd();
 
         glPointSize(5);
         glBegin(GL_TRIANGLES);
@@ -136,6 +134,9 @@ int main(void)
           //  xPoint2 = xPoint2 - 0.02f;
         if (moveBoxPointx2 < boxPointx2 && moveBoxPointx2 > boxPointx1 &&
             moveBoxPointy2 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "닿았다.";
+        if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
+            moveBoxPointy1 > boxPointy2 && moveBoxPointy1 < boxPointy1) std::cout << "닿았다.";
+        
         
        
 
