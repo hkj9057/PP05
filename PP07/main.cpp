@@ -55,23 +55,23 @@ int main(void)
 
         if (GetAsyncKeyState(VK_LEFT) & 0x8000 || GetAsyncKeyState(VK_LEFT) & 0x8001)
         {
-            moveBoxPointx1 -= 0.03;
-            moveBoxPointx2 -= 0.03;
+            moveBoxPointx1 -= 0.003;
+            moveBoxPointx2 -= 0.003;
         }
         else if(GetAsyncKeyState(VK_RIGHT) & 0x8000 || GetAsyncKeyState(VK_RIGHT) & 0x8001)
         {
-            moveBoxPointx1 += 0.03;
-            moveBoxPointx2 += 0.03;
+            moveBoxPointx1 += 0.003;
+            moveBoxPointx2 += 0.003;
         }
         if (GetAsyncKeyState(VK_UP) & 0x8000 || GetAsyncKeyState(VK_UP) & 0x8001)
         {
-            moveBoxPointy1 += 0.03;
-            moveBoxPointy2 += 0.03;
+            moveBoxPointy1 += 0.003;
+            moveBoxPointy2 += 0.003;
         }
         else if (GetAsyncKeyState(VK_DOWN) & 0x8000 || GetAsyncKeyState(VK_DOWN) & 0x8001)
         {
-            moveBoxPointy1 -= 0.03;
-            moveBoxPointy2 -= 0.03;
+            moveBoxPointy1 -= 0.003;
+            moveBoxPointy2 -= 0.003;
         }
 
         glPointSize(10);
@@ -132,11 +132,11 @@ int main(void)
           //  xPoint2 = xPoint2 - 0.02f;
         if (moveBoxPointx2 < boxPointx2 && moveBoxPointx2 > boxPointx1 &&
             moveBoxPointy2 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
-        if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
+        else if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
             moveBoxPointy1 > boxPointy2 && moveBoxPointy1 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
-        if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
+        else if (moveBoxPointx1 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
             moveBoxPointy2 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
-        if (moveBoxPointx2 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
+        else if (moveBoxPointx2 < boxPointx2 && moveBoxPointx1 > boxPointx1 &&
             moveBoxPointy1 > boxPointy2 && moveBoxPointy2 < boxPointy1) std::cout << "´ê¾Ò´Ù.";
         
         

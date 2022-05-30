@@ -1,6 +1,6 @@
 #include "MGameLoop.hpp"
 
-int main()
+void main()
 {
 	MuSeoun_Engine::MGameLoop gLoop;
 	gLoop.Run();
@@ -20,5 +20,5 @@ int main()
 			//씽크 어씽크 = 동기(scv)/ 비동기(프로브) 
 	        
 
-	return 0;
+	//return 0;
 }
