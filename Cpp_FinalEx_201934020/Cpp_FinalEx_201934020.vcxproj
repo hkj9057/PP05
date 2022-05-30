@@ -137,6 +137,7 @@
     <ClInclude Include="JConsolManager.hpp" />
     <ClInclude Include="JGameLoop.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="RenderGlfw.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

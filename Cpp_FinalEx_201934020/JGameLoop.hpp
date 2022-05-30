@@ -16,8 +16,8 @@ namespace JunSeok_Game
 		GLFWwindow* window;
 		bool _isGameRunning;
 		JConsoleRenderer cRenderer;
-		chrono::system_clock::time_point startRenderTimePoint;
-		chrono::duration<double> renderDuration;
+		//chrono::system_clock::time_point startRenderTimePoint;
+		//chrono::duration<double> renderDuration;
 		Player Player;
 		Enemy Enemy;
 
@@ -42,7 +42,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 			glfwSetErrorCallback(error_callback);
 			if (!glfwInit())
 				exit(EXIT_FAILURE);
-			window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
+			window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL); // 윈도우창생성
 			if (!window)
 			{
 				glfwTerminate();
@@ -50,7 +50,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 			}
 
 
-			startRenderTimePoint = chrono::system_clock::now();
+			//startRenderTimePoint = chrono::system_clock::now();
 			while (_isGameRunning)
 			{
 				Input();
@@ -80,16 +80,16 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		}
 		void Render()
 		{
-			cRenderer.Clear();
+			//cRenderer.Clear();
 
-			cRenderer.MoveCursor(10, 20);// 프레임 위치
+			//cRenderer.MoveCursor(10, 20);// 프레임 위치
 
-			renderDuration = chrono::system_clock::now() - startRenderTimePoint;
-			startRenderTimePoint = chrono::system_clock::now();
-			string fps = "FPS : " + to_string(1.0 / renderDuration.count());
-			cRenderer.DrawString(fps);
+			//renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+			//startRenderTimePoint = chrono::system_clock::now();
+			//string fps = "FPS : " + to_string(1.0 / renderDuration.count());
+			//cRenderer.DrawString(fps);
 
-			this_thread::sleep_for(chrono::milliseconds(20));
+			//this_thread::sleep_for(chrono::milliseconds(20));
 		}
 	};
 }
