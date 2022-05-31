@@ -130,14 +130,14 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="JConsolManager.hpp" />
     <ClInclude Include="JGameLoop.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="RenderGlfw.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
