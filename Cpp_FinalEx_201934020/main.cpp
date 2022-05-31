@@ -4,4 +4,6 @@ void main()
 {
 	JunSeok_Game::JGameLoop JGameLoop;
 	JGameLoop.Run();
+
+	_CrtDumpMemoryLeaks();
 }

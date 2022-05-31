@@ -11,6 +11,16 @@ namespace JunSeok_Game
 	public:
 		float Enemy_XPoint;
 		float Enemy_YPoint;
+		float Enemy_Speed;
+
+		Enemy()
+		{
+			Enemy_XPoint = 0.9f;
+			Enemy_YPoint = 0.0f;
+			Enemy_Speed = 0.09;
+		}
+		~Enemy()
+		{}
 
 		//rand() = 난수 생성(대충 0~351364)
 		
@@ -23,29 +33,6 @@ namespace JunSeok_Game
 		//}
 		//~Player()
 		//{}
-		/*void isKeyPressed()
-		{
-			if (GetAsyncKeyState(VK_LEFT) & 0x8000 || GetAsyncKeyState(VK_LEFT) & 0x8001)
-			{
-				Player_XPoint1 -= 0.07;
-				Player_XPoint2 -= 0.07;
-			}
-			else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 || GetAsyncKeyState(VK_RIGHT) & 0x8001)
-			{
-				Player_XPoint1 += 0.07;
-				Player_XPoint2 += 0.07;
-			}
-			if (GetAsyncKeyState(VK_UP) & 0x8000 || GetAsyncKeyState(VK_UP) & 0x8001)
-			{
-				Player_YPoint1 += 0.07;
-				Player_YPoint2 += 0.07;
-			}
-			else if (GetAsyncKeyState(VK_DOWN) & 0x8000 || GetAsyncKeyState(VK_DOWN) & 0x8001)
-			{
-				Player_YPoint1 -= 0.07;
-				Player_YPoint2 -= 0.07;
-			}
-		}*/
 	};
 
 }

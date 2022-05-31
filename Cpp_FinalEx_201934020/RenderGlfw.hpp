@@ -11,6 +11,7 @@ namespace JunSeok_Game
     class RenderGlfw
     {
     public:
+
         GLFWwindow* window;
         
 
@@ -49,25 +50,25 @@ namespace JunSeok_Game
             exit(EXIT_SUCCESS);
         }
 
-        void Draw(float x, float y)
+
+        void Draw(float x, float y, float color)
         {
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
-            glClearColor(1.0f, 1.0f, 0.0f, 1.0f); // 화면을 한가지 색으로 채운다(클리어하겠다)
+           // glClearColor(1.0f, 1.0f, 0.0f, 1.0f); // 화면을 한가지 색으로 채운다(클리어하겠다)
             glClear(GL_COLOR_BUFFER_BIT);
 
             glPointSize(20);
             glBegin(GL_POINTS); // 점(플레이어)
-
-            glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+           // glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+            glColor3f(1.0f, color, 0.0f);
             glVertex2f(x, y);
-            //glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
             //glVertex2f(x1, y2);
             //glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
             //glVertex2f(x2, y2);
 
-            glEnd();
+           
 
             //glPointSize(10);
             //glBegin(GL_TRIANGLES);
@@ -80,10 +81,14 @@ namespace JunSeok_Game
             //glVertex2f(x2, y2);
 
             //glEnd(); // 사각형
-
+        
+        }
+        void SwapBuffer()
+        
+        {
+            glEnd();
             glfwSwapBuffers(window); //그림 그리는걸 다른데서 미리하고 버퍼스왑으로 가져옴? 그리는 과정 안보여짐
             glfwPollEvents(); // 이벤트를 계속 체크
         }
-    private:
     };
 }

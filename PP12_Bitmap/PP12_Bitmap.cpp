@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <Windows.h>
 
-#pragma comment(lib, "OpenGL32")
+#pragma comment(lib, "OpenGL32") // crt = C런타임디버그
 
 /*  Create checkerboard texture  */
 #define checkImageWidth 64
