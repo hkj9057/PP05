@@ -4,35 +4,40 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
+
 namespace JunSeok_Game
 {
 	class Enemy
 	{
 	public:
-		float Enemy_XPoint;
-		float Enemy_YPoint;
+		float XPoint;
+		float YPoint;
 		float Enemy_Speed;
 
 		Enemy()
 		{
-			Enemy_XPoint = 0.9f;
-			Enemy_YPoint = 0.0f;
-			Enemy_Speed = 0.09;
+			XPoint = 0.9f;
+			YPoint = 0.85f;
+			Enemy_Speed = (float)(rand() % 10) / 1000 + 0.001f;
+			cout << Enemy_Speed;
 		}
 		~Enemy()
 		{}
 
-		//rand() = 난수 생성(대충 0~351364)
+		void EnemyMove()
+		{
+			XPoint -= Enemy_Speed;
+			if (XPoint < -1.0f) XPoint = 0.9f;
+		}
+		void EnEmyInInitialize()
+		{
+			XPoint = 0.9f;
+			YPoint = 0.85f;
+			Enemy_Speed = (float)(rand() % 10) / 1000 + 0.001f;
+			cout << Enemy_Speed;
+		}
 		
-		//Player()
-		//{
-			//float Player_XPoint1 = -0.1f;
-			//float Player_XPoint2 = 0.2f;
-			//float Player_YPoint1 = -0.1f;
-			//float Player_YPoint2 = 0.2f;
-		//}
-		//~Player()
-		//{}
 	};
 
 }

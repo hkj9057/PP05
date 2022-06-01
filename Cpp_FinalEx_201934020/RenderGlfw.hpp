@@ -50,7 +50,6 @@ namespace JunSeok_Game
             exit(EXIT_SUCCESS);
         }
 
-
         void Draw(float x, float y, float color)
         {
             glEnable(GL_BLEND);
@@ -64,11 +63,10 @@ namespace JunSeok_Game
            // glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
             glColor3f(1.0f, color, 0.0f);
             glVertex2f(x, y);
+
             //glVertex2f(x1, y2);
             //glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
             //glVertex2f(x2, y2);
-
-           
 
             //glPointSize(10);
             //glBegin(GL_TRIANGLES);

@@ -6,12 +6,12 @@ namespace JunSeok_Game
 	class Player
 	{
 	public:
-		float Player_XPoint;
-		float Player_YPoint;
+		float XPoint;
+		float YPoint;
 		Player()
 		{
-			 Player_XPoint = 0.0f;
-			 Player_YPoint = 0.0f;
+			 XPoint = 0.0f;
+			 YPoint = 0.0f;
 		}
 		~Player()
 		{}
@@ -19,21 +19,25 @@ namespace JunSeok_Game
 		{
 			if (GetAsyncKeyState(VK_LEFT) & 0x8000 || GetAsyncKeyState(VK_LEFT) & 0x8001)
 			{
-				Player_XPoint -= 0.009;
-				
+				XPoint -= 0.009;
 			}
 			else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 || GetAsyncKeyState(VK_RIGHT) & 0x8001)
 			{
-				Player_XPoint += 0.009;
+				XPoint += 0.009;
 			}
 			if (GetAsyncKeyState(VK_UP) & 0x8000 || GetAsyncKeyState(VK_UP) & 0x8001)
 			{
-				Player_YPoint += 0.009;
+				YPoint += 0.009;
 			}
 			else if (GetAsyncKeyState(VK_DOWN) & 0x8000 || GetAsyncKeyState(VK_DOWN) & 0x8001)
 			{
-				Player_YPoint -= 0.009;
+				YPoint -= 0.009;
 			}
+		}
+		void PlayerInInitialize()
+		{
+			XPoint = 0.0f;
+			YPoint = 0.0f;
 		}
 	};
 }
