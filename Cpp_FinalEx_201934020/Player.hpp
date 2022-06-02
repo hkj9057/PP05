@@ -34,7 +34,7 @@ namespace JunSeok_Game
 				YPoint -= 0.009;
 			}
 		}
-		void PlayerInInitialize()
+		void PlayerInitialize()
 		{
 			XPoint = 0.0f;
 			YPoint = 0.0f;

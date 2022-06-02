@@ -4,7 +4,7 @@ void main()
 {
 	JunSeok_Game::JGameLoop JGameLoop;
 	srand(time(NULL));
-	JGameLoop.Run();
+	JGameLoop.GlRun();
 
 	_CrtDumpMemoryLeaks();
-} // Ãæµ¹ ,
+} 
