@@ -6,6 +6,7 @@
 #include "Enemy.hpp"
 #include "RenderGlfw.hpp"
 #include <GLFW/glfw3.h>
+#include <math.h>
 
 namespace JunSeok_Game
 {
@@ -27,14 +28,21 @@ namespace JunSeok_Game
 			//{
 				//_GameOver = false;
 			//}
-			for (int i = 0; i < 10; i++)
+		
+
+			if (((p_y - 0.02) < (e_y + 0.02)) && ((p_y + 0.02) > (e_y - 0.02)))
 			{
-				if (((Player.XPoint - 0.5) < (Enemy[i].XPoint + 0.5)) && ((Player.XPoint + 0.5) > (Enemy[i].XPoint - 0.5)))
-				{
-					if (((Player.YPoint - 0.5) < (Enemy[i].YPoint + 0.5)) && ((Player.YPoint + 0.5) > (Enemy[i].YPoint - 0.5)))
-						cout << "출돌"; // _GameOver = false;
-				}
+				if (((p_x - 0.02) < (e_x + 0.02)) && ((p_x + 0.02) > (e_x - 0.02)))
+					 _GameOver = false;
 			}
+
+			//float length = 0.04f;
+			//float dis = sqrt(((p_y - e_y) * (p_y - e_y)) + ((p_x - e_x) * (p_x - e_x)));
+			//
+			//if (length > dis)
+			//{
+			//	cout << "출돌"; // _GameOver = false
+			//}
 		}
 
 		void ReStart()
@@ -91,6 +99,11 @@ namespace JunSeok_Game
 				Enemy[i].EnEmyInInitialize();
 			}
 			_isGameRunning = true;
+
+			for (int i = 0; i < 10; i++)
+			{
+				Enemy[i].YPoint = 0.85f - (i * 0.2f);
+			}
 		}
 
 		void Release()
@@ -122,12 +135,12 @@ namespace JunSeok_Game
 
 		void Update()
 		{
-			for (size_t i = 0; i < 10; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				Enemy[i].EnemyMove();
+				Collision(Player.XPoint, Player.YPoint,
+					Enemy[i].XPoint, Enemy[i].YPoint);
 			}
-			Collision(Player.XPoint, Player.YPoint,
-				Enemy->XPoint, Enemy->YPoint);
 		}
 
 		void Render()
@@ -139,15 +152,15 @@ namespace JunSeok_Game
 				//arrayDown -= 0.2f;
 			//}
 			RenderGlfw.Draw(Enemy[0].XPoint, Enemy[0].YPoint, 1.0f);
-			RenderGlfw.Draw(Enemy[1].XPoint, Enemy[1].YPoint - 0.2f , 1.0f);
-			RenderGlfw.Draw(Enemy[2].XPoint, Enemy[2].YPoint - 0.4f, 1.0f);
-			RenderGlfw.Draw(Enemy[3].XPoint, Enemy[3].YPoint - 0.6f, 1.0f);
-			RenderGlfw.Draw(Enemy[4].XPoint, Enemy[4].YPoint - 0.8f, 1.0f);
-			RenderGlfw.Draw(Enemy[5].XPoint, Enemy[5].YPoint - 1.0f, 1.0f);
-			RenderGlfw.Draw(Enemy[6].XPoint, Enemy[6].YPoint - 1.2f, 1.0f);
-			RenderGlfw.Draw(Enemy[7].XPoint, Enemy[7].YPoint - 1.4f, 1.0f);
-			RenderGlfw.Draw(Enemy[8].XPoint, Enemy[8].YPoint - 1.6f, 1.0f);
-			RenderGlfw.Draw(Enemy[9].XPoint, Enemy[9].YPoint - 1.8f, 1.0f);
+			RenderGlfw.Draw(Enemy[1].XPoint, Enemy[1].YPoint , 1.0f);
+			RenderGlfw.Draw(Enemy[2].XPoint, Enemy[2].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[3].XPoint, Enemy[3].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[4].XPoint, Enemy[4].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[5].XPoint, Enemy[5].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[6].XPoint, Enemy[6].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[7].XPoint, Enemy[7].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[8].XPoint, Enemy[8].YPoint, 1.0f);
+			RenderGlfw.Draw(Enemy[9].XPoint, Enemy[9].YPoint, 1.0f);
 			
 			RenderGlfw.SwapBuffer();
 		}
